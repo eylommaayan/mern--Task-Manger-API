@@ -29,3 +29,26 @@ coverage/
 Thumbs.db
 .vscode/
 .idea/
+
+
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Bun
+.bun/
+bun.lockb
+
+# npm cache
+*.npm
+
+# Logs
+logs
+*.log
+
+# System files
+.DS_Store
+Thumbs.db
+.bash_history

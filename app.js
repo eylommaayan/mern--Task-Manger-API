@@ -3,6 +3,13 @@ const express = require('express');
 
 // יוצר מופע של אפליקציית Express (האובייקט המרכזי שמנהל את השרת והראוטים)
 const app = express();
+const tasks = require('./routes/task')
+
+
+
+// -------------------- Middleware (תוכנות ביניים) --------------------
+app.use(express.json()) // מאפשרת ל־Express להבין JSON בגוף הבקשה (req.body)
+
 
 
 // -------------------- Routes (נתיבים) --------------------
@@ -13,6 +20,9 @@ const app = express();
 app.get('/', (req, res) => {
   res.send('Task Manger App'); // טיפ: עדיף "Manager" :)
 });
+
+app.use('/api/v1/tasks', tasks)
+
 
 
 // -------------------- Server (שרת) --------------------
