@@ -14,7 +14,11 @@ const taskSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    },
+  },
+  { timestamps: true } // מוסיף createdAt / updatedAt
 );
+
+// TTL: מחיקה אוטומטית 10 דקות אחרי ה-creation
+taskSchema.index({ createdAt: 1 }, { expireAfterSeconds: 60 * 10 });
 
 module.exports = mongoose.model('Task', taskSchema);
