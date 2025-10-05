@@ -5,6 +5,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const connectDB = require('./db/connect');
+const errorHandlerMiddleware = require('./models/error-handler');
 
 // 3) app init
 const app = express();
@@ -20,7 +21,7 @@ app.use(express.json());
 // אם בכל זאת רוצים טקסט, השאר אותו — אבל אז static לא ישנה את /.
 app.get('/', (req, res) => res.send('Task Manager App'));
 app.use('/api/v1/tasks', require('./routes/task'));
-
+app.use(errorHandlerMiddleware);
 // 7) server
 const port = process.env.PORT || 3000;
 
